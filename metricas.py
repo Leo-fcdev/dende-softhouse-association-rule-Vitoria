@@ -40,5 +40,7 @@ def gerar_regras_associacao(itemsets_frequentes, confianca_minima=0.5):
                     'Confianca': round(confianca_B_A, 4),
                     'Lift': round(lift_B_A, 4)
                 })
+            
+    regras.sort(key=lambda x: x['Lift'], reverse=True)
                 
     return regras

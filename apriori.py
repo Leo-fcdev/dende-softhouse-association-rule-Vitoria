@@ -8,9 +8,9 @@ class AprioriCustom:
         #Variavel que vai guardar o número total de vendas
         self.num_transactions = 0
 
-    def _calcular_suporte(self, trasactions, candidato):
+    def _calcular_suporte(self, transactions, candidato):
         #Percorre as vendas gerenado um número "1" sempre que o combo estiver no carrinho de compras e soma retornando o toal vendido
-        count = sum(1 for transacao in trasactions if candidato.issubset(transacao))
+        count = sum(1 for transacao in transactions if candidato.issubset(transacao))
         #Retorna a porcetagem 
         return count / self.num_transactions
     

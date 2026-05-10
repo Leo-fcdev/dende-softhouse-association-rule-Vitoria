@@ -31,7 +31,9 @@ def carregar_e_limpar_dados(caminho_arquivo):
     #O dataset original junta todos os produtos de uma mesma compra em um texto apenas
     #É usado a função anônima lambda para pegar o texto e 'cortar' com split no ponto e vírgula.
     #O strip() garante que não fique nenhum espaço em branco sobrando no inicio ou final de cada item
-    df['lista_produto'] = df['descricao_limpa'].apply(lambda texto:[produto.strip() for produto in texto.split(';')])
+    df['lista_produto'] = df['descricao_limpa'].apply(
+        lambda texto: [produto.strip().split()[0] for produto in texto.split(';') if produto.strip()]
+    )
 
     #Pega a coluna 'lista_produto' e converte do formato Pandas para uma lista pura do Python
     lista_de_vendas = df['lista_produto'].tolist()
